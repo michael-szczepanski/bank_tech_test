@@ -54,3 +54,28 @@ Transaction.toString()
   // Overloads javascripts Object.prototype.toString to return
   // 'date || credit || debit || balance' string
 ```
+
+## Testing and Examples:
+#### Input and Output examples
+```javascript
+const account = new Account();
+
+account.addDeposit(1000, new Date());
+account.printStatement(): 
+// returns: 
+// date || credit || debit || balance
+// 19/06/2023 || 1000.00 || || 1000.00
+
+account.addWithdrawal(400, new Date());
+account.printStatement();
+// returns: 
+// date || credit || debit || balance
+// 19/06/2023 || || 400.00 || 600.00
+// 19/06/2023 || 1000.00 || || 1000.00
+```
+
+#### Edge cases:
+```plain
+* Account.addWithdrawal and Account.addDeposit will need to reject invalid inputs for both date and amount values.
+* Sort function will need to be used to sort transactions in case that withdrawals and deposits are not provided in the chronological order
+```
