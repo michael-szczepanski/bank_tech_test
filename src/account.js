@@ -14,12 +14,15 @@ class Account {
 
   addWithdrawal = (amount, date) => {
     this.balance -= amount;
+    const transaction = new Transaction(date, null, amount, this.balance);
+    this.transactions.push(transaction);
   }
 
   printStatement = () => {
     let statement = "date || credit || debit || balance\n"
     statement += (
       this.transactions
+        .reverse()
         .map(transaction => transaction.toString())
         .join("\n")
     );
