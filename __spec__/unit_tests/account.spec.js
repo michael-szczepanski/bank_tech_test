@@ -20,6 +20,14 @@ describe('Account', () => {
       expect(account.balance).toBe(0);
       expect(account.transactions.length).toBe(0);
     });
+
+    test('it rejects non-Date objects for date field', () => {
+      expect(
+        account.addDeposit(1000, "banana")
+      ).toBe("date is not a Date object");
+      expect(account.balance).toBe(0);
+      expect(account.transactions.length).toBe(0);
+    })
   });
 
   describe('addWithdrawal', () => {
@@ -32,7 +40,9 @@ describe('Account', () => {
     });
 
     test('it rejects non-numerical values for withdrawal amount', () => {
-      account.addWithdrawal("banana", new Date());
+      expect(
+        account.addWithdrawal("banana", new Date())
+      ).toBe("amount is not a number");
       expect(account.balance).toBe(0);
       expect(account.transactions.length).toBe(0);
     });

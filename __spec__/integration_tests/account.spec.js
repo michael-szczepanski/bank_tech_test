@@ -43,7 +43,7 @@ describe('Account', () => {
     });
 
     test('correctly adds multiple transactions to the array', () => {
-      account.addDeposit(10000);
+      account.addDeposit(10000, new Date());
       account.addWithdrawal(1234, new Date("2023-06-19"));
       account.addWithdrawal(5678, new Date("2023-06-19"));
       expect(account.transactions.length).toBe(3);
