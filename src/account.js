@@ -9,7 +9,7 @@ class Account {
   }
 
   addWithdrawal = (amount, date) => {
-
+    this.balance -= amount;
   }
 
   printStatement = () => {

@@ -9,10 +9,20 @@ describe('Account', () => {
 
   describe('addDeposit', () => {
     test('it correctly updates the balance', () => {
-      account.addDeposit(1000, new Date("2023-06-19"));
+      account.addDeposit(1000, new Date());
       expect(account.balance).toBe(1000);
-      account.addDeposit((2000), new Date("2023-06-15"));
+      account.addDeposit((2000), new Date());
       expect(account.balance).toBe(3000);
     });
   });
+
+  describe('addWithdrawal', () => {
+    test('it correctly updates the balance', () => {
+      account.addDeposit(4000, new Date());
+      account.addWithdrawal(1000, new Date());
+      expect(account.balance).toBe(3000);
+      account.addWithdrawal((2000), new Date());
+      expect(account.balance).toBe(1000);
+    });
+  })
 });
