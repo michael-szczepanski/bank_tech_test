@@ -1,5 +1,13 @@
 # Bank Tech Test
 
+## Tech Test Requirements
+```plain
+* You should be able to interact with your code via a REPL like IRB or Node. (You don't need to implement a command line interface that takes input from STDIN.)
+* Deposits, withdrawal.
+* Account statement (date, amount, balance) printing.
+* Data can be kept in memory (it doesn't need to be stored to a database or anything).
+```
+
 ## Tech Test Acceptance Criteria
 ```plain
 Given a client makes a deposit of 1000 on 10-01-2023
@@ -12,4 +20,37 @@ date || credit || debit || balance
 14/01/2023 || || 500.00 || 2500.00
 13/01/2023 || 2000.00 || || 3000.00
 10/01/2023 || 1000.00 || || 1000.00
+```
+
+## Design Process
+
+#### Class Design
+![Class Design](design/bank_tech_test_class_design.png)
+
+#### Function Design
+```javascript
+Account.addDeposit(amount, date)
+  // Takes a float for amount, and a Date object
+  // Adds amount to balance
+  // Creates a Transaction object with debit == amount
+  // Adds Transaction object to transactions list
+  // Returns nothing
+
+Account.addWithdrawal(amount, date)
+  // Takes a float for amount, and a Date object
+  // Subtracts amount from balance
+  // Creates a Transaction object with credit == amount
+  // Adds Transaction object to transactions list
+  // Returns nothing
+
+Account.printStatement()
+  // Takes no arguments
+  // Returns a string representing a list of transactions in reverse order
+  // Formatted as:
+  // date || credit || debit || balance
+
+
+Transaction.toString()
+  // Overloads javascripts Object.prototype.toString to return
+  // 'date || credit || debit || balance' string
 ```
