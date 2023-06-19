@@ -27,7 +27,7 @@ describe('Account', () => {
       ).toBe("date is not a Date object");
       expect(account.balance).toBe(0);
       expect(account.transactions.length).toBe(0);
-    })
+    });
   });
 
   describe('addWithdrawal', () => {
@@ -43,6 +43,14 @@ describe('Account', () => {
       expect(
         account.addWithdrawal("banana", new Date())
       ).toBe("amount is not a number");
+      expect(account.balance).toBe(0);
+      expect(account.transactions.length).toBe(0);
+    });
+
+    test('it rejects non-Date objects for date field', () => {
+      expect(
+        account.addWithdrawal(1000, "banana")
+      ).toBe("date is not a Date object");
       expect(account.balance).toBe(0);
       expect(account.transactions.length).toBe(0);
     });
