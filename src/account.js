@@ -14,6 +14,7 @@ class Account {
   }
 
   addWithdrawal = (amount, date) => {
+    if ( typeof amount !== 'number') { return };
     this.balance -= amount;
     const transaction = new Transaction(date, null, amount, this.balance);
     this.transactions.push(transaction);
