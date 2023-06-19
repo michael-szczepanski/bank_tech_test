@@ -1,3 +1,5 @@
+const Transaction = require('./transaction.js');
+
 class Account {
   constructor() {
     this.transactions = [];
@@ -6,6 +8,8 @@ class Account {
 
   addDeposit = (amount, date) => {
     this.balance += amount;
+    const transaction = new Transaction(date, amount, 0, this.balance);
+    this.transactions.push(transaction);
   }
 
   addWithdrawal = (amount, date) => {
