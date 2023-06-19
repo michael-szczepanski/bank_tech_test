@@ -1,4 +1,19 @@
 # Bank Tech Test
+- [Bank Tech Test](#bank-tech-test)
+  - [Tech Test Requirements](#tech-test-requirements)
+  - [Tech Test Acceptance Criteria](#tech-test-acceptance-criteria)
+  - [Design Process](#design-process)
+      - [Class Design](#class-design)
+      - [Function Design](#function-design)
+  - [Testing and Examples:](#testing-and-examples)
+      - [Input and Output examples](#input-and-output-examples)
+      - [Edge cases:](#edge-cases)
+  - [Test Coverage](#test-coverage)
+  - [](#)
+  - [How to Install](#how-to-install)
+  - [How to Run](#how-to-run)
+      - [Program](#program)
+      - [Tests](#tests)
 
 ## Tech Test Requirements
 ```plain
@@ -25,7 +40,7 @@ date || credit || debit || balance
 ## Design Process
 
 #### Class Design
-![Class Design](design/bank_tech_test_class_design.png)
+![Class Design](docs/bank_tech_test_class_design.png)
 
 #### Function Design
 ```javascript
@@ -77,5 +92,49 @@ account.printStatement();
 #### Edge cases:
 ```plain
 * Account.addWithdrawal and Account.addDeposit will need to reject invalid inputs for both date and amount values.
-* Sort function will need to be used to sort transactions in case that withdrawals and deposits are not provided in the chronological order
+* Sort function will need to be used to sort transactions in case that withdrawals and deposits are not provided in the chronological order (To be implemented at a later date if the end user will be given a way to provide a date of the transactions)
+```
+
+## Test Coverage
+![Jest test coverage](docs/jest_test_coverage.png)
+```plain
+Jest currently shows 100% coverage across all categories
+```
+
+## 
+
+## How to Install
+```zsh
+# If you do not currently have nvm (Node Version Manager) installed, run these two lines.
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+source ~/.zshrc
+
+# If you already have nvm installed on your machine, only run these two lines
+nvm use node
+npm install
+```
+
+## How to Run
+#### Program
+```zsh
+# There is currently no command line interface, therefore the app has to be interacted with through Node.
+# To run node:
+node
+
+# And once in node:
+const Account = require('./src/account.js')
+
+# This will import the main Account class to test available methods and their functionality
+# The data is currently not persisting between individual instances of node
+```
+#### Tests
+```zsh
+# To test coverage:
+npm run test
+
+# To list all created tests:
+jest --verbose
+
+# Below line will run an example output for the example given in the tech test requirements:
+npm run tech_test
 ```

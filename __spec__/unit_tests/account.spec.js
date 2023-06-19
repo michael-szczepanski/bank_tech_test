@@ -1,4 +1,4 @@
-const Account = require('../../src/account.js')
+const Account = require('../../src/account.js');
 
 let account;
 
@@ -16,15 +16,15 @@ describe('Account', () => {
     });
 
     test('it rejects non-numerical values for deposit amount', () => {
-      account.addDeposit("banana", new Date());
+      account.addDeposit('banana', new Date());
       expect(account.balance).toBe(0);
       expect(account.transactions.length).toBe(0);
     });
 
     test('it rejects non-Date objects for date field', () => {
       expect(
-        account.addDeposit(1000, "banana")
-      ).toBe("date is not a Date object");
+          account.addDeposit(1000, 'banana'),
+      ).toBe('date is not a Date object');
       expect(account.balance).toBe(0);
       expect(account.transactions.length).toBe(0);
     });
@@ -41,16 +41,16 @@ describe('Account', () => {
 
     test('it rejects non-numerical values for withdrawal amount', () => {
       expect(
-        account.addWithdrawal("banana", new Date())
-      ).toBe("amount is not a number");
+          account.addWithdrawal('banana', new Date()),
+      ).toBe('amount is not a number');
       expect(account.balance).toBe(0);
       expect(account.transactions.length).toBe(0);
     });
 
     test('it rejects non-Date objects for date field', () => {
       expect(
-        account.addWithdrawal(1000, "banana")
-      ).toBe("date is not a Date object");
+          account.addWithdrawal(1000, 'banana'),
+      ).toBe('date is not a Date object');
       expect(account.balance).toBe(0);
       expect(account.transactions.length).toBe(0);
     });
