@@ -8,4 +8,13 @@ describe('Transaction', () => {
     expect(transaction.debit).toBe(456);
     expect(transaction.balance).toBe(789);
   })
+
+  describe('toString()', () => {
+    test('it returns a correct string if both credit and debit is provided', () => {
+      let transaction = new Transaction(new Date("2023-06-19"), 123, 456, 789);
+      expect(transaction.toString()).toEqual(
+        "19/06/2023 || 123 || 456 || 789"
+      );
+    });
+  })
 })

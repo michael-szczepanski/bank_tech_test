@@ -21,7 +21,8 @@ class Account {
     statement += (
       this.transactions
         .map(transaction => transaction.toString())
-        .join("\n"))
+        .join("\n")
+    );
     return statement;
   }
 }

@@ -16,6 +16,17 @@ describe('Account', () => {
       expect(storedTransaction.credit).toBe(1234);
       expect(storedTransaction.debit).toBe(null);
       expect(storedTransaction.balance).toBe(1234);
-    })
-  })
-})
+    });
+
+    test('correctly adds multiple transactions to the array', () => {
+      account.addDeposit(1234, new Date("2023-06-19"));
+      account.addDeposit(5678, new Date("2023-06-19"));
+      expect(account.transactions.length).toBe(2);
+      let storedTransaction = account.transactions[1];
+      expect(storedTransaction.date).toEqual(new Date("2023-06-19"));
+      expect(storedTransaction.credit).toBe(5678);
+      expect(storedTransaction.debit).toBe(null);
+      expect(storedTransaction.balance).toBe(6912);
+    });
+  });
+});
