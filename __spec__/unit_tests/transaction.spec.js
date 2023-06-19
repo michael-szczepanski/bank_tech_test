@@ -13,8 +13,22 @@ describe('Transaction', () => {
     test('it returns a correct string if both credit and debit is provided', () => {
       let transaction = new Transaction(new Date("2023-06-19"), 123, 456, 789);
       expect(transaction.toString()).toEqual(
-        "19/06/2023 || 123 || 456 || 789"
+        "19/06/2023 || 123.00 || 456.00 || 789.00"
       );
     });
-  })
+
+    test('it returns a correct string if only credit is provided', () => {
+      let transaction = new Transaction(new Date("2023-06-19"), 123, null, 789);
+      expect(transaction.toString()).toEqual(
+        "19/06/2023 || 123.00 || || 789.00"
+      );
+    });
+
+    test('it returns a correct string if only debit is provided', () => {
+      let transaction = new Transaction(new Date("2023-06-19"), null, 456, 789);
+      expect(transaction.toString()).toEqual(
+        "19/06/2023 || || 456.00 || 789.00"
+      );
+    });
+  });
 })
