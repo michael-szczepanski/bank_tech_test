@@ -1,7 +1,7 @@
 const Account = require('../../src/account.js');
 
 describe('App', () => {
-  it('passes the example test', () => {
+  test('passes the example test', () => {
     const account = new Account();
     account.addDeposit(1000, new Date("2023-01-10"));
     account.addDeposit(2000, new Date("2023-01-13"));
@@ -11,7 +11,7 @@ describe('App', () => {
     );
   });
 
-  it('correctly updates after first deposit', () => {
+  test('correctly updates after first deposit', () => {
     const account = new Account();
     account.addDeposit(1000, new Date("2023-01-10"));
     expect(account.printStatement()).toEqual(

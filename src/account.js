@@ -7,6 +7,7 @@ class Account {
   }
 
   addDeposit = (amount, date) => {
+    if ( typeof amount !== 'number') { return };
     this.balance += amount;
     const transaction = new Transaction(date, amount, null, this.balance);
     this.transactions.push(transaction);

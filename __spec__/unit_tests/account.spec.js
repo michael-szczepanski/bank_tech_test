@@ -14,6 +14,12 @@ describe('Account', () => {
       account.addDeposit((2000), new Date());
       expect(account.balance).toBe(3000);
     });
+
+    test('it rejects non-numerical values for deposit amount', () => {
+      account.addDeposit("banana", new Date());
+      expect(account.balance).toBe(0);
+      expect(account.transactions.length).toBe(0);
+    })
   });
 
   describe('addWithdrawal', () => {
@@ -24,5 +30,5 @@ describe('Account', () => {
       account.addWithdrawal((2000), new Date());
       expect(account.balance).toBe(1000);
     });
-  })
+  });
 });
