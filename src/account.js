@@ -8,7 +8,7 @@ class Account {
 
   addDeposit = (amount, date) => {
     this.balance += amount;
-    const transaction = new Transaction(date, amount, 0, this.balance);
+    const transaction = new Transaction(date, amount, null, this.balance);
     this.transactions.push(transaction);
   }
 
@@ -17,7 +17,12 @@ class Account {
   }
 
   printStatement = () => {
-    return 'date || credit || debit || balance\n14/01/2023 || || 500.00 || 2500.00\n13/01/2023 || 2000.00 || || 3000.00\n10/01/2023 || 1000.00 || || 1000.00'
+    let statement = "date || credit || debit || balance\n"
+    statement += (
+      this.transactions
+        .map(transaction => transaction.toString())
+        .join("\n"))
+    return statement;
   }
 }
 
