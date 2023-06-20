@@ -13,6 +13,7 @@ class Account {
     this.balance += amount;
     const transaction = new Transaction(date, amount, null, this.balance);
     this.transactions.push(transaction);
+    this.recalculateBalances();
   };
 
   addWithdrawal = (amount, date = new Date()) => {
@@ -22,6 +23,7 @@ class Account {
     this.balance -= amount;
     const transaction = new Transaction(date, null, amount, this.balance);
     this.transactions.push(transaction);
+    this.recalculateBalances();
   };
 
   printStatement = () => {
@@ -34,6 +36,15 @@ class Account {
     );
     return statement;
   };
+
+  recalculateBalances() {
+    let balance = 0;
+    this.transactions.forEach((transaction) => {
+      balance += transaction.credit;
+      balance -= transaction.debit;
+      transaction.balance = balance;
+    });
+  }
 }
 
 module.exports = Account;
