@@ -65,5 +65,14 @@ describe('Account', () => {
       account.recalculateBalances();
       expect(account.transactions[1].balance).toBe(170);
     });
+
+    test('it correctly recalculates if 3 transactions are present', () => {
+      account.transactions.push({credit: 200, debit: null, balance: 200});
+      account.transactions.push({credit: null, debit: 30, balance: 0});
+      account.transactions.push({credit: 60, debit: null, balance: 222});
+      account.recalculateBalances();
+      expect(account.transactions[1].balance).toBe(170);
+      expect(account.transactions[2].balance).toBe(230);
+    });
   });
 });
