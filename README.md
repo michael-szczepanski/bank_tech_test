@@ -4,13 +4,15 @@
   - [Design Process](#design-process)
     - [Thought process](#thought-process)
     - [Edge cases](#edge-cases)
-    - [Initial Class Design and Function Design](#initial-class-design-and-function-design)
-  - [Testing and Examples:](#testing-and-examples)
-    - [Input and Output examples](#input-and-output-examples)
   - [How to Install and Run code](#how-to-install-and-run-code)
     - [Environment setup](#environment-setup)
     - [Run Program](#run-program)
     - [Run Tests](#run-tests)
+    - [Initial Class Design and Function Design](#initial-class-design-and-function-design)
+  - [Testing and Examples:](#testing-and-examples)
+    - [Input and Output examples](#input-and-output-examples)
+    - [Testing coverage](#testing-coverage)
+    - [Proof of passed criteria](#proof-of-passed-criteria)
 
 ## Tech Test Description
 Requirements:
@@ -57,6 +59,46 @@ date || credit || debit || balance
   * Would also make balance on the statement incorrect if a new transaction was entered before any existing ones, as the Transaction can only see the Account.balance at the time of object creation
   * This has been resolved by creating a recalculateBalances function that will sort the array in chronological order and parse through array, updating balances that may now be out of date
   * recalculateBalances runs after every transaction added to the account
+
+## How to Install and Run code
+
+### Environment setup
+If you do not currently have nvm (Node Version Manager) installed, install it using:
+```zsh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+source ~/.zshrc
+```
+Otherwise, run node and install relevant packages using:
+```zsh
+nvm use node
+npm install
+```
+
+### Run Program
+There is currently no command line interface, therefore the app has to be interacted with through Node.
+To run node:
+```zsh
+node
+```
+And once in node:
+```javascript
+const Account = require('./src/account.js')
+```
+This will import the main Account class to test available methods and their functionality. The data is currently not persisting between individual instances of node.
+
+### Run Tests
+To test coverage:
+```zsh
+npm run test
+```
+To list all created tests:
+```zsh
+jest --verbose
+```
+To run an output for the example given in the tech test requirements:
+```zsh
+npm run tech_test
+```
 
 ### Initial Class Design and Function Design
 ![Class Design](docs/bank_tech_test_class_design.png)
@@ -107,43 +149,15 @@ account.printStatement();
 // 19/06/2023 || || 400.00 || 600.00
 // 19/06/2023 || 1000.00 || || 1000.00
 ```
+### Testing coverage
+```plain
+Testing coverage is currently at 100% across all categories according to jest
+```
+![Jest Testing Coverage](docs/jest_test_coverage.png)
 
-## How to Install and Run code
-
-### Environment setup
-If you do not currently have nvm (Node Version Manager) installed, install it using:
-```zsh
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-source ~/.zshrc
+### Proof of passed criteria
+```plain
+Test criteria can currently be seen as passed in both node, and by running the tech_test_example.js file
 ```
-Otherwise, run node and install relevant packages using:
-```zsh
-nvm use node
-npm install
-```
-
-### Run Program
-There is currently no command line interface, therefore the app has to be interacted with through Node.
-To run node:
-```zsh
-node
-```
-And once in node:
-```javascript
-const Account = require('./src/account.js')
-```
-This will import the main Account class to test available methods and their functionality. The data is currently not persisting between individual instances of node.
-
-### Run Tests
-To test coverage:
-```zsh
-npm run test
-```
-To list all created tests:
-```zsh
-jest --verbose
-```
-To run an output for the example given in the tech test requirements:
-```zsh
-npm run tech_test
-```
+![Node Acceptance Criteria](docs/node_acceptance_criteria.png)
+![Tech Test Demo](docs/tech_test_example_output.png)
