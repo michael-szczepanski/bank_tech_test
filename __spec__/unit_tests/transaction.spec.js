@@ -2,7 +2,7 @@
 const Transaction = require('../../src/transaction.js');
 
 describe('Transaction', () => {
-  test('it creates correct object', () => {
+  test('it creates an object with correct fields', () => {
     const transaction = new Transaction(new Date('2023-06-19'), 123, 456, 789);
     expect(transaction.date).toEqual(new Date('2023-06-19'));
     expect(transaction.credit).toBe(123);

@@ -7,12 +7,8 @@ class Account {
   }
 
   addDeposit = (amount, date) => {
-    if (typeof amount !== 'number') {
-      return 'amount is not a number';
-    };
-    if ( !(date instanceof Date) ) {
-      return 'date is not a Date object';
-    };
+    if (typeof amount !== 'number') return 'amount is not a number';
+    if ( !(date instanceof Date) ) return 'date is not a Date object';
 
     this.balance += amount;
     const transaction = new Transaction(date, amount, null, this.balance);
@@ -20,12 +16,8 @@ class Account {
   };
 
   addWithdrawal = (amount, date) => {
-    if ( typeof amount !== 'number') {
-      return 'amount is not a number';
-    };
-    if ( !(date instanceof Date) ) {
-      return 'date is not a Date object';
-    };
+    if ( typeof amount !== 'number') return 'amount is not a number';
+    if ( !(date instanceof Date) ) return 'date is not a Date object';
 
     this.balance -= amount;
     const transaction = new Transaction(date, null, amount, this.balance);

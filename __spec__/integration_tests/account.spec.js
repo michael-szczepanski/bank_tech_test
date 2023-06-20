@@ -12,6 +12,7 @@ describe('Account', () => {
       account.addDeposit(1234, new Date('2023-06-19'));
       expect(account.transactions.length).toBe(1);
       const storedTransaction = account.transactions[0];
+
       expect(storedTransaction.date).toEqual(new Date('2023-06-19'));
       expect(storedTransaction.credit).toBe(1234);
       expect(storedTransaction.debit).toBe(null);
@@ -22,6 +23,7 @@ describe('Account', () => {
       account.addDeposit(1234, new Date());
       account.addDeposit(5678, new Date('2023-06-19'));
       expect(account.transactions.length).toBe(2);
+
       const storedTransaction = account.transactions[1];
       expect(storedTransaction.date).toEqual(new Date('2023-06-19'));
       expect(storedTransaction.credit).toBe(5678);
@@ -35,6 +37,7 @@ describe('Account', () => {
       account.addDeposit(10000, new Date());
       account.addWithdrawal(1234, new Date('2023-06-19'));
       expect(account.transactions.length).toBe(2);
+
       const storedTransaction = account.transactions[1];
       expect(storedTransaction.date).toEqual(new Date('2023-06-19'));
       expect(storedTransaction.credit).toBe(null);
@@ -47,6 +50,7 @@ describe('Account', () => {
       account.addWithdrawal(1234, new Date('2023-06-19'));
       account.addWithdrawal(5678, new Date('2023-06-19'));
       expect(account.transactions.length).toBe(3);
+
       const storedTransaction = account.transactions[2];
       expect(storedTransaction.date).toEqual(new Date('2023-06-19'));
       expect(storedTransaction.credit).toBe(null);
