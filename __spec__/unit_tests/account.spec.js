@@ -9,15 +9,15 @@ describe('Account', () => {
 
   describe('addDeposit', () => {
     test('it correctly updates the balance', () => {
-      account.addDeposit(1000, new Date());
+      account.addDeposit(1000);
       expect(account.balance).toBe(1000);
 
-      account.addDeposit((2000), new Date());
+      account.addDeposit((2000));
       expect(account.balance).toBe(3000);
     });
 
     test('it rejects non-numerical values for deposit amount', () => {
-      account.addDeposit('banana', new Date());
+      account.addDeposit('banana');
       expect(account.balance).toBe(0);
       expect(account.transactions.length).toBe(0);
     });
@@ -33,17 +33,17 @@ describe('Account', () => {
 
   describe('addWithdrawal', () => {
     test('it correctly updates the balance', () => {
-      account.addDeposit(4000, new Date());
-      account.addWithdrawal(1000, new Date());
+      account.addDeposit(4000);
+      account.addWithdrawal(1000);
       expect(account.balance).toBe(3000);
 
-      account.addWithdrawal((2000), new Date());
+      account.addWithdrawal((2000));
       expect(account.balance).toBe(1000);
     });
 
     test('it rejects non-numerical values for withdrawal amount', () => {
       expect(
-          account.addWithdrawal('banana', new Date()),
+          account.addWithdrawal('banana'),
       ).toBe('amount is not a number');
       expect(account.balance).toBe(0);
       expect(account.transactions.length).toBe(0);
