@@ -39,11 +39,13 @@ class Account {
 
   recalculateBalances() {
     let balance = 0;
-    this.transactions.forEach((transaction) => {
-      balance += transaction.credit;
-      balance -= transaction.debit;
-      transaction.balance = balance;
-    });
+    this.transactions
+        .sort((a, b) => a.date - b.date)
+        .forEach((transaction) => {
+          balance += transaction.credit;
+          balance -= transaction.debit;
+          transaction.balance = balance;
+        });
   }
 }
 
