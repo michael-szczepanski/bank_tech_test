@@ -7,7 +7,7 @@ class Transaction {
   }
 
   toString = () => {
-    let transactionString =`${this.date.toLocaleDateString()} || `;
+    let transactionString =`${this.date.toLocaleDateString('en-gb')} || `;
 
     transactionString +=
       this.credit !== null ? `${this.credit.toFixed(2)} || ` : `|| `;
